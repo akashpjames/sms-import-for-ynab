@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Templates
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll="true">
+
+  <!--<ion-button color="primary" (click)="presentModal()" *ngIf="!gotMessage">Open Modal</ion-button>-->
+
+  <div class="no-content-text" *ngIf="!availableTemplates.length">
+    <ion-icon class="no-content-icon" name="sad"></ion-icon>
+    <div>
+      <ion-label>
+        No templates found! Add one by clicking on the plus icon at the right bottom
+      </ion-label>
+    </div>
+  </div>
+
+  <div>
+    <ion-list>
+      <div *ngFor="let tmpl of availableTemplates">
+        <ion-card (click)="presentActionSheet(tmpl)">
+          <ion-card-header>
+            <ion-card-title>{{tmpl.name}}</ion-card-title>
+            <ion-card-subtitle class="trigger">Trigger</ion-card-subtitle>
+            <ion-label>{{tmpl.phrase}}</ion-label><br>
+            <ion-card-subtitle class="trigger">Template</ion-card-subtitle>
+            <ion-label>{{tmpl.template}}</ion-label>
+          </ion-card-header>
+
+        </ion-card>
+      </div>
+
+    </ion-list>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="selectMessage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh templates"
+            refreshingText="Refreshing templates">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+</ion-content>

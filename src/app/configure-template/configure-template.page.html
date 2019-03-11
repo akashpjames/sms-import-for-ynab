@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Parameters</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <div class="test">{{selectedMsg}}</div>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Select the unique word or phrase in the message and tap on TRIGGER.</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-button  size="small" color="primary" (click)="setPhrase()">Trigger</ion-button>
+      <span class="selected-text">{{phrase}}</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Select price, date, memo one after the other and tap on respective buttons. Make sure leading and trailing spaces are avoided as well as the punctuations at end.</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-button  size="small" color="primary" (click)="setPrice()">Price</ion-button>
+      <span class="selected-text">{{price}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-button   size="small" color="primary" (click)="setDate()">Date</ion-button>
+      <span class="selected-text">{{date}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-button   size="small" color="primary" (click)="setMemo()">Memo</ion-button>
+      <span class="selected-text">{{memo}}</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Select any other variable text in the message to be ignored (balance amount, time etc) and tap on IGNORE. You can select multiple text to ignore.</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-button  size="small" color="primary" (click)="setAdditional()">Ignore</ion-button>
+      <span class="selected-text" *ngFor="let txt of dynamic">{{txt}}&nbsp;</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Template name</ion-label>
+    <ion-input [(ngModel)]="templateName" clearInput></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Account</ion-label>
+      <ion-select [(ngModel)]="account" okText="Select" cancelText="Cancel">
+        <ion-select-option *ngFor="let item of accounts" [value]="item">{{item.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-radio-group [(ngModel)]="expenseType">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>Income</ion-label>
+              <ion-radio value="income"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Expense</ion-label>
+              <ion-radio value="expense"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-radio-group>
+
+  </ion-list>
+
+  <div>
+    <ion-button color="primary" expand="block" (click)="generateTemplate()"> Generate Template</ion-button>
+  </div>
+
+  <!--<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">-->
+    <!--<ion-refresher-content-->
+            <!--pullingIcon="arrow-dropdown"-->
+            <!--pullingText="Pull to update accounts"-->
+            <!--refreshingText="Updating Accounts...">-->
+    <!--</ion-refresher-content>-->
+  <!--</ion-refresher>-->
+
+</ion-content>

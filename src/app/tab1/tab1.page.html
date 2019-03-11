@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     Sync
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--<ion-card class="welcome-card">-->
+      <!--<ion-img src="/assets/ynab.svg"></ion-img>-->
+      <!--<ion-card-header>-->
+        <!--<ion-card-subtitle>SMS Import For YNAB</ion-card-subtitle>-->
+        <!--<ion-card-title>SMS Sync</ion-card-title>-->
+      <!--</ion-card-header>-->
+      <!--<ion-card-content>-->
+        <!--<p>Add a template and tap on sync when new SMS arrives</p>-->
+      <!--</ion-card-content>-->
+        <!--<ion-item>-->
+            <!--<ion-button clear item-start>Like</ion-button>-->
+            <!--<ion-button clear item-end>Comment</ion-button>-->
+        <!--</ion-item>-->
+    <!--</ion-card>-->
+
+
+
+    <div class="no-content-text" *ngIf="!syncedMessages.length">
+        <ion-icon class="no-content-icon" name="mail"></ion-icon>
+        <div>
+            <ion-label>
+               No recent synced messages. Create a template and click on the sync button.
+            </ion-label>
+        </div>
+    </div>
+
+
+
+    <ion-list>
+        <!--<ion-item >-->
+            <!--<ion-ripple-effect></ion-ripple-effect>-->
+            <!--<ion-button class="sync-button" color="primary" (click)="checkPermissionAndSync()">-->
+                <!--<ion-icon name="sync"></ion-icon>-->
+            <!--</ion-button>-->
+        <!--</ion-item>-->
+
+
+        <ion-item *ngIf="totalSyncs">
+            <ion-label>Total synced messages</ion-label>
+            <ion-badge slot="end">{{totalSyncs}}</ion-badge>
+        </ion-item>
+
+            <ion-list-header *ngIf="syncedMessages.length">
+                <ion-label>
+                    Recently Synced Messages
+                </ion-label>
+            </ion-list-header>
+
+
+        <!--<ion-card (click)="presentActionSheet(tmpl)">-->
+            <!--<ion-card-header>-->
+                <!--<ion-card-title>Sodexo</ion-card-title>-->
+            <!--</ion-card-header>-->
+            <!--<ion-card-content>-->
+               <!--INR 87.00 spent on 23 Jun at Flipkart-->
+            <!--</ion-card-content>-->
+        <!--</ion-card>-->
+
+
+        <!--<ion-card (click)="presentActionSheet(tmpl)">-->
+            <!--<ion-card-header>-->
+                <!--<ion-card-title>RBL 6518</ion-card-title>-->
+            <!--</ion-card-header>-->
+            <!--<ion-card-content>-->
+                <!--INR 247.00 spent on 22 Feb at Freshmart-->
+            <!--</ion-card-content>-->
+        <!--</ion-card>-->
+
+        <div *ngIf="showbuttons">
+            <ion-button color="primary" (click)="clearTemplates()">Clear All Templates</ion-button>
+            <ion-button color="secondary" (click)="showAllKeys()">Show All Keys</ion-button>
+            <!--<ion-button color="primary" (click)="testParse()">Test Message Parse</ion-button>-->
+            <ion-button color="dark" (click)="updateLastTime()">Update Time</ion-button>
+            <ion-button color="dark" (click)="clearMessages()">Clear Messages</ion-button>
+            <ion-button color="dark" (click)="showMessages()">Show/Hide Messages</ion-button>
+        </div>
+
+
+        <table border="1">
+
+        <tr  *ngFor="let item of mykeys">
+           <td>{{item.key}}</td>
+            <td> <ion-button color="danger" (click)="deleteKey(item)">Del</ion-button></td>
+           <td>{{item.value}}</td>
+        </tr>
+        </table>
+
+        <ion-list *ngIf="showMeMessages">
+            <!--<ion-item *ngFor="let x of watchedMessages">-->
+            <ion-item *ngFor="let x of messages">
+                <p>{{x.body}}</p>
+            </ion-item>
+        </ion-list>
+
+
+
+
+        <ion-card *ngFor="let x of syncedMessages.slice().reverse()" [ngClass]="{'card-success':x.transaction.state === 'success', 'card-failure':x.transaction.state === 'error'}">
+            <ion-card-header (click)="messageStatus(x.transaction)">
+                <ion-card-title>
+                    {{x.transaction.accountName}}
+                    <!--NEW class for very new messages-->
+                    <!--<span *ngIf="x.new === 'true'" class="new-message">NEW</span>-->
+                </ion-card-title>
+                <ion-card-subtitle>
+                    <p> {{x.transaction.message}} </p>
+                </ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+
+        <!--<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">-->
+            <!--<ion-refresher-content-->
+                    <!--pullingIcon="arrow-dropdown"-->
+                    <!--pullingText="Pull to sync your messages"-->
+                    <!--refreshingText="Syncing latest messages ...">-->
+            <!--</ion-refresher-content>-->
+        <!--</ion-refresher>-->
+
+
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="checkConnection()">
+            <ion-icon size="large" name="sync"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <!--<ion-fab vertical="bottom" horizontal="start" slot="fixed">-->
+        <!--<ion-fab-button (click)="showConfig()">-->
+            <!--<ion-icon name="hammer"></ion-icon>-->
+        <!--</ion-fab-button>-->
+    <!--</ion-fab>-->
+
+</ion-content>

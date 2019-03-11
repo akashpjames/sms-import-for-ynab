@@ -1,0 +1,24 @@
+ion-card{
+  --background: #fff;
+}
+
+.no-content-icon{
+  font-size : 96px;
+}
+
+.no-content-text{
+  margin-top: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: grey;
+  text-align: center;
+}
+
+.trigger{
+  background: #488aff;
+  padding: 3px;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  margin-right: 5px;
+}

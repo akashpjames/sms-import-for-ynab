@@ -1,0 +1,8 @@
+{
+  "name": "ynab",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,27 @@
+.test {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  font-size: 20px
+}
+
+.message-margin{
+  margin: 1em;
+}
+
+.button-margin{
+  margin-bottom: 2em;
+}
+
+
+ion-card{
+  --background: #fff;
+  padding: 20px;
+}
+
+
+.selected-text{
+  margin-left: auto;
+  color: #78706e;
+}

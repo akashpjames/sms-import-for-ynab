@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card (click)="updateAPI()">
+    <ion-card-header>
+      <ion-card-subtitle class="middle-align">Access Token</ion-card-subtitle>
+      <ion-card-title class="middle-align">{{display.apiToken}}</ion-card-title>
+      <ion-card-title *ngIf="!display.apiToken" class="middle-align">Not Set</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
+
+  <ion-card (click)="setBudget()">
+    <ion-card-header>
+      <ion-card-subtitle class="middle-align">Budget</ion-card-subtitle>
+      <ion-card-title class="middle-align">{{display.budget}}</ion-card-title>
+      <ion-card-title *ngIf="!display.budget" class="middle-align">Not Set</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
+
+  <ion-card (click)="updateAccounts()">
+    <ion-card-header>
+      <ion-card-subtitle class="middle-align">Accounts</ion-card-subtitle>
+      <ion-card-title class="middle-align">{{display.numAccounts}} available</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
+
+
+  <!--<ion-card (click)="paypalLink()">-->
+    <!--<ion-card-header>-->
+      <!--<ion-card-subtitle class="middle-align">Donate</ion-card-subtitle>-->
+      <!--<img class="paypal-logo" src="../../assets/logos/paypal.svg">-->
+    <!--</ion-card-header>-->
+  <!--</ion-card>-->
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to update budgets and accounts list"
+            refreshingText="Refreshing budgets and accounts">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="helper-buttons">
+    <ion-button color="primary" fill="clear" href="">Help</ion-button>
+    <ion-button color="primary" fill="clear" href="https://app.youneedabudget.com/settings/developer">Get Access Token</ion-button>
+  </div>
+
+
+
+
+
+</ion-content>
