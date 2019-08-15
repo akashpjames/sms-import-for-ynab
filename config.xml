@@ -85,7 +85,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-android-permissions" spec="1.0.0" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.5" />
-    <plugin name="cordova-plugin-sms" spec="/Users/jamesa/Desktop/cordova-plugin-sms" />
+    <plugin name="cordova-plugin-sms" spec="file:./src/plugin/cordova-plugin-sms" />
     <engine name="android" spec="7.1.4" />
     <engine name="browser" spec="5.0.4" />
 </widget>
