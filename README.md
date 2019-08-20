@@ -7,3 +7,5 @@ ionic serve`
 
 To debug in android,
 `ionic cordova run android`
+
+How to use this app: https://www.youtube.com/watch?v=1PT1QhzM5Mg
