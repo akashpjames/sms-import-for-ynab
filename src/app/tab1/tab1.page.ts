@@ -189,7 +189,7 @@ export class Tab1Page {
                                         /* TODO see whether the promise returned from this.parseSMS can be used
                                         for loading.dismiss(), this.responseRecvd++; */
                                         this.parsedMessagesTotal++;
-                                        this.parseSMS(mess.body);
+                                        this.parseSMS(mess.body, mess.date);
                                     }
                                 }
                                 // }
@@ -231,7 +231,7 @@ export class Tab1Page {
         }, 500);
     }
 
-    async parseSMS(smsToParse) {
+    async parseSMS(smsToParse, smsDate) {
         if (this.templates && this.templates.length) {
             for (const x of this.templates) {
                 if (smsToParse.includes(x['phrase'])) {
@@ -260,21 +260,24 @@ export class Tab1Page {
                         payload.type =  x['type'];
                         payload.account =  x['account'];
                         payload.date = new Date(payload.date);
-                        var year = new Date(payload.date).getFullYear();
-                        //Handling messages with date like 28 Feb instead of 28 Feb 2019
-                        if (year === 2001) {
-                            payload.date.setFullYear(new Date().getFullYear());
-                            year = new Date(payload.date).getFullYear();
+                        if(x.dateType !== 'autoFetch') {
+                            var year = new Date(payload.date).getFullYear();
+                            //Handling messages with date like 28 Feb instead of 28 Feb 2019
+                            if (year === 2001) {
+                                payload.date.setFullYear(new Date().getFullYear());
+                                year = new Date(payload.date).getFullYear();
+                            }
+                            var month = new Date(payload.date).getMonth() + 1;
+                            var date = new Date(payload.date).getDate();
                         }
-                        var month = new Date(payload.date).getMonth() + 1;
-                        var date = new Date(payload.date).getDate();
-
-
                         let requiredDate = '';
                         if (x.dateType === 'firstType') {
                             requiredDate = `${year}-${month}-${date}`;
-                        } else {
+                        } else if (x.dateType === 'secondType'){
                             requiredDate = `${year}-${date}-${month}`;
+                        } else {
+                            let messageDate = new Date(smsDate);
+                            requiredDate = `${messageDate.getFullYear()}-${messageDate.getMonth()+1}-${messageDate.getDate()}`;
                         }
                         payload.price = payload.price.replace(',','');
                         payload.price = payload.price * 1000;

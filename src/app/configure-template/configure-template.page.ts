@@ -118,6 +118,10 @@ export class ConfigureTemplatePage implements OnInit {
                 type: 'radio',
                 label: secondDate,
                 value: 'secondType'
+            }, {
+                type: 'radio',
+                label: 'Auto Fetch',
+                value: 'autoFetch'
             }],
             buttons: [
                 {
