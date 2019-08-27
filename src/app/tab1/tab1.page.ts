@@ -279,8 +279,8 @@ export class Tab1Page {
                             let messageDate = new Date(smsDate);
                             requiredDate = `${messageDate.getFullYear()}-${messageDate.getMonth()+1}-${messageDate.getDate()}`;
                         }
-                        payload.price = payload.price.replace(',','');
-                        payload.price = payload.price * 1000;
+                        payload.price = payload.price.replace(/[,.]/g,'');
+                        payload.price = payload.price * 10;
                         if (x['type'] === 'expense') {
                             payload.price = payload.price * -1;
                         }
