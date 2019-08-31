@@ -4,7 +4,7 @@ Android app which parses bank messages that can then be synced with YNAB. Helpfu
 ### Where to find the apk?
 Go the the [Releases](https://github.com/akashpjames/sms-import-for-ynab/releases) tab and get the latest apk from `Assets` section.
 
-### How to use this app?
+### How to use this app [video]?
 Check this [Youtube video](https://www.youtube.com/watch?v=1PT1QhzM5Mg) for a small tutorial.
 
 ### How to use this app?
