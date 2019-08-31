@@ -4,15 +4,6 @@ Android app which parses bank messages that can then be synced with YNAB. Helpfu
 ### Where to find the apk?
 Go the the [Releases](https://github.com/akashpjames/sms-import-for-ynab/releases) tab and get the latest apk from `Assets` section.
 
-### How to debug in browser?
-    npm install;
-    ionic serve;
-
-### How to debug in android?
-- Enable USB debugging in your device
-- Connect your android device
-- Run this command: `ionic cordova run android`
-
 ### How to use this app?
 Check this [Youtube video](https://www.youtube.com/watch?v=1PT1QhzM5Mg) for a small tutorial.
 
@@ -42,3 +33,12 @@ Check this [Youtube video](https://www.youtube.com/watch?v=1PT1QhzM5Mg) for a sm
 - Wait for a new message to come with the trigger in its content.
 - Tap on the sync button from the home tab.
 - Voila! Your new message will be parsed and sent to YNAB. It will be waiting for clearing and to add category.
+
+### How to debug in browser?
+    npm install;
+    ionic serve;
+
+### How to debug in android?
+- Enable USB debugging in your device
+- Connect your android device
+- Run this command: `ionic cordova run android`
