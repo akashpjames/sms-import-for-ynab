@@ -1,6 +1,8 @@
 # sms-import-for-ynab
 Android app which parses bank messages that can then be synced with YNAB. Helpful for those who are not able to use the auto import feature from YNAB.
 
+<img src="https://i.imgur.com/ahDfDoM.png">
+
 ### Where to find the apk?
 Go the the [Releases](https://github.com/akashpjames/sms-import-for-ynab/releases) tab and get the latest apk from `Assets` section.
 
